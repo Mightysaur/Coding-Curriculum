@@ -1,0 +1,121 @@
+from random import randrange
+
+inv1 = inv2 = inv3 = inv4 = inv5 = inv6 = inv7 = inv8 = inv9 = inv0 = 0
+
+
+lootNo = 6
+loot = [
+#ID,Name,Description,Duration,Damage
+[0,"Empty","Your inventory slot is empty",0,0],
+[1,"Health Potion","This potion will aid in your recovery, increasing your HP by 250 points",1,-250],
+[2,"Status Potion","This potion will purge you of any status effects. Unfortunately, it can take a while to kick in.",1,0],
+[3,"Poison","This special poison will cause your blows to deal damage over time. The vial has enough for ten hits.",10,10],
+[4,"Pyrotheum","This liquid is a special oil, concocted such that it will set whatever it hits of fire. The ampule contains enough to last five hits.",5,25],
+[5,"Cryotheum","A strange crystaline paste. On contact with another object it will immediately cause it to freeze. The flask contains enough to last for five hits.",5,25],
+[6,"Reflex Enhancer","A serum designed to allow you to dodge attacks even if you are distracted",3,0]
+] #if you change this, remember to update the fight code!
+
+def PrintInventory():
+    global pronoun
+    global Pronoun
+    global name
+    global gend
+    global proff
+    global inv1
+    global inv2
+    global inv3
+    global inv4
+    global inv5
+    global inv6
+    global inv7
+    global inv8
+    global inv9
+    global inv0
+    global HP
+    global gameFlag
+    global roomNo
+    global rooms
+    global lootNo
+    global loot
+    global monsterNo
+    global monster
+
+    print "========================================"
+    print "Slot 1 " + loot[int(inv1)][1]
+    print "   - " + loot[int(inv1)][2]
+    print "-----------------------------------------"
+    print "Slot 2 " + loot[int(inv2)][1]
+    print "   - " + loot[int(inv2)][2]
+    print "-----------------------------------------"
+    print "Slot 3 " + loot[int(inv3)][1]
+    print "   - " + loot[int(inv3)][2]
+    print "-----------------------------------------"
+    print "Slot 4 " + loot[int(inv4)][1]
+    print "   - " + loot[int(inv4)][2]
+    print "-----------------------------------------"
+    print "Slot 5 " + loot[int(inv5)][1]
+    print "   - " + loot[int(inv5)][2]
+    print "-----------------------------------------"
+    print "Slot 6 " + loot[int(inv6)][1]
+    print "   - " + loot[int(inv6)][2]
+    print "-----------------------------------------"
+    print "Slot 7 " + loot[int(inv7)][1]
+    print "   - " + loot[int(inv7)][2]
+    print "-----------------------------------------"
+    print "Slot 8 " + loot[int(inv8)][1]
+    print "   - " + loot[int(inv8)][2]
+    print "-----------------------------------------"
+    print "Slot 9 " + loot[int(inv9)][1]
+    print "   - " + loot[int(inv9)][2]
+    print "-----------------------------------------"
+    print "Slot 0 " + loot[int(inv0)][1]
+    print "   - " + loot[int(inv0)][2]
+    print "========================================="
+
+def LootRoll():
+    global pronoun
+    global Pronoun
+    global name
+    global gend
+    global proff
+    global inv1
+    global inv2
+    global inv3
+    global inv4
+    global inv5
+    global inv6
+    global inv7
+    global inv8
+    global inv9
+    global inv0
+    global HP
+    global gameFlag
+    global roomNo
+    global rooms
+    global lootNo
+    global monsterNo
+    global monster
+    result = randrange(1,lootNo,1)
+    print ("You found a " + loot[int(result)][1] + " where would you like to store it? putting something in a filled slot will destroy the previous object.")
+    PrintInventory()
+    chooseSlot = raw_input("Slot : ")
+    if chooseSlot in ["Slot 1","slot 1","Slot1","slot1","1"]:
+        inv1 = loot[result][0]
+    if chooseSlot in ["Slot 2","slot 2","Slot2","slot2","2"]:
+        inv2 = loot[result][0]
+    if chooseSlot in ["Slot 3","slot 3","Slot3","slot3","3"]:
+        inv3 = loot[result][0]
+    if chooseSlot in ["Slot 4","slot 4","Slot4","slot4","4"]:
+        inv4 = loot[result][0]
+    if chooseSlot in ["Slot 5","slot 5","Slot5","slot5","5"]:
+        inv5 = loot[result][0]
+    if chooseSlot in ["Slot 6","slot 6","Slot6","slot6","6"]:
+        inv6 = loot[result][0]
+    if chooseSlot in ["Slot 7","slot 7","Slot7","slot7","7"]:
+        inv7 = loot[result][0]
+    if chooseSlot in ["Slot 8","slot 8","Slot8","slot8","8"]:
+        inv8 = loot[result][0]
+    if chooseSlot in ["Slot 9","slot 9","Slot9","slot9","9"]:
+        inv9 = loot[result][0]
+    if chooseSlot in ["Slot 0","slot 0","Slot0","slot0","0"]:
+        inv0 = loot[result][0]
