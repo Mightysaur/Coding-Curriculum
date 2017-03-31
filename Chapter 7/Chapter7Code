@@ -1,0 +1,241 @@
+if(len(heroStatus) >0):
+            for i in range(len(heroStatus)-1,-1,-1):
+                if (heroStatus[i][0] == 2):
+                    heroStatus=[]
+                    break
+                elif (heroStatus[i][0] == 6):
+                    heroDodge = True
+                else:
+                    HP = HP - heroStatus[i][2]
+                    print "you received " + str(heroStatus[i][2]) + " damage from a status effect!"
+                    if (HP<1):
+                        print "You died"
+                        gameFlag = False
+                        return
+                heroStatus[i][1] = heroStatus[i][1]-1
+                if(heroStatus[i][1] < 1):
+                    del heroStatus[i]
+
+        print "HP : " + str(HP)
+        print "Monster HP : " + str(monsterHP)
+        PrintInventory()
+        heroAttack = raw_input("type 'a' to attack, 'b' to dodge and 1-0 to use an item in your inventory : ")
+        if heroAttack in ["A","a"]:
+            if (proff == "Warrior"):
+                strikeChance = randrange(0,5)
+                if(strikeChance<4):
+                    if monsterDodge:
+                        dodge = randrange(1,10)
+                        monsterDodge = False
+                        if (dodge<2):
+                            monsterHP = monsterHP - 1000
+                            if (monsterHP<1):
+                                LootRoll()
+                                return
+                            for i in range(len(attackStatus)):
+                                monsterStatus.append([attackStatus[i][0],attackStatus[i][1],attackStatus[i][2]])
+                                attackStatus = []
+                    elif monsterDefend:
+                        monsterDefend = False
+                        monsterHP = monsterHP - 1000/10
+                        if (monsterHP<1):
+                            LootRoll()
+                            return
+                        for i in range(len(attackStatus)):
+                            monsterStatus.append([attackStatus[i][0],attackStatus[i][1],attackStatus[i][2]])
+                            attackStatus = []
+
+                    else:
+                        monsterHP = monsterHP - (monster[int(result)][6][int(monsterAttack)][3]/10)
+                        if (monsterHP<1):
+                            LootRoll()
+                            return
+                        for i in range(len(attackStatus)):
+                            monsterStatus.append([attackStatus[i][0],attackStatus[i][1],attackStatus[i][2]])
+                            attackStatus = []
+
+            elif (proff == "Rogue"):
+                for i in range(10):
+                    strikeChance = randrange(0,5)
+                    if(strikeChance<3):
+                        if monsterDodge:
+                            dodge = randrange(1,10)
+                            monsterDodge = False
+                            if (dodge<2):
+                                monsterHP = monsterHP - 100
+                                if (monsterHP<1):
+                                    LootRoll()
+                                    return
+                                for i in range(len(attackStatus)):
+                                    monsterStatus.append([attackStatus[i][0],attackStatus[i][1],attackStatus[i][2]])
+                                    attackStatus = []
+                        elif monsterDefend:
+                            monsterDefend = False
+                            monsterHP = monsterHP - 100/10
+                            if (monsterHP<1):
+                                LootRoll()
+                                return
+                            for i in range(len(attackStatus)):
+                                monsterStatus.append([attackStatus[i][0],attackStatus[i][1],attackStatus[i][2]])
+                                attackStatus = []
+
+                        else:
+                            monsterHP = monsterHP - 100
+                            if (monsterHP<1):
+                                LootRoll()
+                                return
+                            for i in range(len(attackStatus)):
+                                monsterStatus.append([attackStatus[i][0],attackStatus[i][1],attackStatus[i][2]])
+                                attackStatus = []
+            else:
+                print "An error occcured, the game will terminate, unfortuantely all unsaved progress will be lost."
+                gameFlag = False
+                return
+        elif heroAttack in ["B","b"]:
+            if (proff == "Warrior"):
+                heroDefend = True
+            elif (proff == "Rogue"):
+                heroDodge = True
+            else:
+                print "An error occcured, the game will terminate, unfortuantely all unsaved progress will be lost."
+                gameFlag = False
+                return
+
+        elif (int(heroAttack) == 1):
+            effect = inv1
+            if (effect == 2):
+                heroStatus=[]
+            elif (effect == 6):
+                heroDodge = True
+            elif (effect == 1):
+                HP = HP +250
+            else:
+                attackStatus.append([loot[effect][0],loot[effect][3],loot[effect][4]])
+            inv1 = 0
+
+        elif (int(heroAttack) == 2):
+            effect = inv2
+            if (effect == 2):
+                heroStatus=[]
+            elif (effect == 6):
+                heroDodge = True
+            elif (effect == 1):
+                HP = HP +250
+            else:
+                attackStatus.append([loot[effect][0],loot[effect][3],loot[effect][4]])
+            inv2 = 0
+
+        elif (int(heroAttack) == 3):
+            effect = inv3
+            if (effect == 2):
+                heroStatus=[]
+            elif (effect == 6):
+                heroDodge = True
+            elif (effect == 1):
+                HP = HP +250
+            else:
+                attackStatus.append([loot[effect][0],loot[effect][3],loot[effect][4]])
+            inv3 = 0
+
+        elif (int(heroAttack) == 4):
+            effect = inv4
+            if (effect == 2):
+                heroStatus=[]
+            elif (effect == 6):
+                heroDodge = True
+            elif (effect == 1):
+                HP = HP +250
+            else:
+                attackStatus.append([loot[effect][0],loot[effect][3],loot[effect][4]])
+            inv4 = 0
+
+        elif (int(heroAttack) == 5):
+            effect = inv5
+            if (effect == 2):
+                heroStatus=[]
+            elif (effect == 6):
+                heroDodge = True
+            elif (effect == 1):
+                HP = HP +250
+            else:
+                attackStatus.append([loot[effect][0],loot[effect][3],loot[effect][4]])
+            inv5 = 0
+
+        elif (int(heroAttack) == 6):
+            effect = inv6
+            if (effect == 2):
+                heroStatus=[]
+            elif (effect == 6):
+                heroDodge = True
+            elif (effect == 1):
+                HP = HP +250
+            else:
+                attackStatus.append([loot[effect][0],loot[effect][3],loot[effect][4]])
+            inv6 = 0
+
+        elif (int(heroAttack) == 7):
+            effect = inv7
+            if (effect == 2):
+                heroStatus=[]
+            elif (effect == 6):
+                heroDodge = True
+            elif (effect == 1):
+                HP = HP +250
+            else:
+                attackStatus.append([loot[effect][0],loot[effect][3],loot[effect][4]])
+            inv7 = 0
+
+        elif (int(heroAttack) == 8):
+            effect = inv8
+            if (effect == 2):
+                heroStatus=[]
+            elif (effect == 6):
+                heroDodge = True
+            elif (effect == 1):
+                HP = HP +250
+            else:
+                attackStatus.append([loot[effect][0],loot[effect][3],loot[effect][4]])
+            inv8 = 0
+
+        elif (int(heroAttack) == 9):
+            effect = inv9
+            if (effect == 2):
+                heroStatus=[]
+            elif (effect == 6):
+                heroDodge = True
+            elif (effect == 1):
+                HP = HP +250
+            else:
+                attackStatus.append([loot[effect][0],loot[effect][3],loot[effect][4]])
+            inv9 = 0
+
+        elif (int(heroAttack) == 0):
+            effect = inv0
+            if (effect == 2):
+                heroStatus=[]
+            elif (effect == 6):
+                heroDodge = True
+            elif (effect == 1):
+                HP = HP +250
+            else:
+                attackStatus.append([loot[effect][0],loot[effect][3],loot[effect][4]])
+            inv0 = 0
+
+        if(len(monsterStatus) > 0):
+            for i in range(len(monsterStatus)-1,-1,-1):
+                if (monsterStatus[i][0] == 2):
+                    monsterStatus=[]
+                elif (monsterStatus[i][0] == 6):
+                    monsterDodge = True
+                elif (monsterStatus[i][0] == 1):
+                    monsterHP = monsterHP + 50
+                else:
+                    monsterHP = monsterHP - monsterStatus[i][2]
+                    print "monster received " + str(monsterStatus[i][2]) + " damage from a status effect!"
+                    if (monsterHP<1):
+                        LootRoll()
+                        return
+
+                monsterStatus[i][1] = monsterStatus[i][1]-1
+                if(monsterStatus[i][1] <1):
+                    del monsterStatus[i]
